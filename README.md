@@ -30,4 +30,4 @@ Tous les documents du cours sont ici. Pour télécharger un fichier : cliquez de
 
 ## Rendre un devoir
 
-Un fichier texte `Prénom-NOM-SQL-DevoirN.txt` : une ligne `-- exercice N` avant chaque réponse, les requêtes telles quelles, les réponses qui ne sont pas des requêtes précédées de `--`. Déposez-le dans le devoir correspondant sur Teams, puis cliquez sur **Rendre**.
+Un fichier texte `Prénom-NOM-SQL-DevoirN.txt` : une ligne `-- exercice N` avant chaque réponse, les requêtes telles quelles, les réponses qui ne sont pas des requêtes précédées de `--`. Déposez-le dans le devoir correspondant sur Teams, puis cliquez sur **Remettre**.
