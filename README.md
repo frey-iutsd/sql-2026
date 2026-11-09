@@ -26,7 +26,7 @@ Tous les documents du cours sont ici. Pour télécharger un fichier : cliquez de
 | 2 | 21 sept. | `DISTINCT`, `ORDER BY`, colonnes calculées, clés, `JOIN` | [diaporama](sql2/), Devoir 2 (sur Teams) |
 | 3 | 19 oct. | `COUNT`/`SUM`/`AVG`…, `GROUP BY`, `HAVING` | [diaporama](sql3/seance3-slides.pdf), [Devoir 3](sql3/devoir3.pdf), [démonstration](sql3/demo-seance3.sql) |
 | 4 | 3 nov. | `CREATE TABLE`, `INSERT`, `UPDATE`, `DELETE`, jointures sur trois tables | [Devoir 4](sql4/devoir4.pdf) |
-| Examen | **ven. 20 nov.** | écrit, sur papier, sans ordinateur | [examen blanc](examen-blanc/examen-blanc.pdf) (corrigé publié ensuite) |
+| Examen | **ven. 20 nov.** | écrit, sur papier, sans ordinateur | [examen blanc](examen-blanc/examen-blanc.pdf), [corrigé](examen-blanc/examen-blanc-corrige.pdf) |
 
 ## Rendre un devoir
 
