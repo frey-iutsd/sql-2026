@@ -28,6 +28,14 @@ Tous les documents du cours sont ici. Pour télécharger un fichier : cliquez de
 | 4 | 3 nov. | `CREATE TABLE`, `INSERT`, `UPDATE`, `DELETE`, jointures sur trois tables | [Devoir 4](sql4/devoir4.pdf) |
 | Examen | **ven. 20 nov.** | écrit, sur papier, sans ordinateur | [examen blanc](examen-blanc/examen-blanc.pdf), [corrigé](examen-blanc/examen-blanc-corrige.pdf) |
 
+## Optimisation linéaire
+
+| Séance | Date | Contenu | Documents |
+|---|---|---|---|
+| 1 | mar. 17 nov. | modéliser, méthode graphique, interpréter (Desmos) | [fiche](opti1/fiche-seance1.pdf), [diaporama](opti1/seance1-slides.pdf) |
+
+Outils : **Desmos** (séance 1, en ligne, rien à installer) : https://www.desmos.com/calculator. À partir de la séance 2 : le **Solveur d'Excel** (Excel installé sur l'ordinateur ; il n'existe pas dans Excel en ligne), ou à défaut **LibreOffice Calc** (gratuit : https://fr.libreoffice.org, menu Outils → Solveur).
+
 ## Rendre un devoir
 
 Un fichier texte `Prénom-NOM-SQL-DevoirN.txt` : une ligne `-- exercice N` avant chaque réponse, les requêtes telles quelles, les réponses qui ne sont pas des requêtes précédées de `--`. Déposez-le dans le devoir correspondant sur Teams, puis cliquez sur **Remettre**.
