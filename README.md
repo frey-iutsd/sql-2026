@@ -26,13 +26,14 @@ Tous les documents du cours sont ici. Pour télécharger un fichier : cliquez de
 | 2 | 21 sept. | `DISTINCT`, `ORDER BY`, colonnes calculées, clés, `JOIN` | [diaporama](sql2/), Devoir 2 (sur Teams) |
 | 3 | 19 oct. | `COUNT`/`SUM`/`AVG`…, `GROUP BY`, `HAVING` | [diaporama](sql3/seance3-slides.pdf), [Devoir 3](sql3/devoir3.pdf), [démonstration](sql3/demo-seance3.sql) |
 | 4 | 3 nov. | `CREATE TABLE`, `INSERT`, `UPDATE`, `DELETE`, jointures sur trois tables | [Devoir 4](sql4/devoir4.pdf) |
-| Examen | **ven. 20 nov.** | écrit, sur papier, sans ordinateur | [examen blanc](examen-blanc/examen-blanc.pdf), [corrigé](examen-blanc/examen-blanc-corrige.pdf) |
+| Examen | **reporté** (date sur Teams) | écrit, sur papier, sans ordinateur | [examen blanc](examen-blanc/examen-blanc.pdf), [corrigé](examen-blanc/examen-blanc-corrige.pdf) |
 
 ## Optimisation linéaire
 
 | Séance | Date | Contenu | Documents |
 |---|---|---|---|
 | 1 | mar. 17 nov. | modéliser, méthode graphique, interpréter (Desmos) | [fiche](opti1/fiche-seance1.pdf), [diaporama](opti1/seance1-slides.pdf) |
+| 2 | ven. 20 nov. | le Solveur d'Excel, rapport de sensibilité (prix fictifs) | [fiche](opti2/fiche-seance2.pdf), [classeur](opti2/opti2.xlsx), **devoir noté : [votre fichier](opti2/devoir/)** (celui qui porte votre numéro étudiant) |
 
 Outils : **Desmos** (séance 1, en ligne, rien à installer) : https://www.desmos.com/calculator. À partir de la séance 2 : le **Solveur d'Excel** (Excel installé sur l'ordinateur ; il n'existe pas dans Excel en ligne), ou à défaut **LibreOffice Calc** (gratuit : https://fr.libreoffice.org, menu Outils → Solveur).
 

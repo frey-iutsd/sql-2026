@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Optimisation lin��aire ��� S��ance 2</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.35; max-width: 620px; margin: 2em auto; color: #1a1a1a; }
+p { margin: 0.5em 0; }
+h1 { font-size: 20pt; border-bottom: 2px solid #333; padding-bottom: 6px; }
+h2 { font-size: 14pt; color: #1a4d8f; margin-top: 1.1em; margin-bottom: 0.4em; }
+h3 { font-size: 12pt; color: #1a4d8f; margin-top: 0.9em; margin-bottom: 0.3em; }
+code { background: #f2f2f2; padding: 1px 4px; border-radius: 3px; font-family: "DejaVu Sans Mono", monospace; }
+pre { background: #f2f2f2; padding: 8px 12px; margin: 0.6em 0; border-left: 3px solid #1a4d8f; overflow-x: auto; page-break-inside: avoid; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; margin: 1em 0; }
+th, td { border: 1px solid #999; padding: 4px 10px; }
+hr { border: none; border-top: 1px solid #ccc; margin: 1.5em 0; }
+.exo { background: #fff8e1; border-left: 4px solid #e8a33d; margin: 0.4em 0; padding: 0.45em 1em 0.45em 2.2em; position: relative; border-radius: 0 4px 4px 0; page-break-inside: avoid; }
+.exo::before { content: "📝"; position: absolute; left: 0.6em; }
+.exo + .exo { margin-top: -0.15em; }
+.tip { background: #e8f2fc; border-left: 4px solid #2f7fbf; margin: 0.6em 0; padding: 0.45em 1em 0.45em 2.2em; position: relative; border-radius: 0 4px 4px 0; page-break-inside: avoid; }
+.tip::before { content: "💡"; position: absolute; left: 0.6em; }
+.bareme { background: #eef7ee; border-left: 4px solid #3c8d40; margin: 0.6em 0; padding: 0.45em 1em; border-radius: 0 4px 4px 0; }
+figure { background: #f5f7fa; border: 1px solid #d5dbe2; border-radius: 8px; padding: 10px 10px 8px 10px; margin: 0.7em auto; max-width: 78%; text-align: center; page-break-inside: avoid; }
+figure img { width: 100%; height: auto; border: 1px solid #ccc; border-radius: 3px; margin: 0; display: block; }
+figcaption { font-size: 0.9em; color: #445; margin-top: 6px; }
+pre > code.sourceCode > span { text-indent: 0 !important; padding-left: 0 !important; display: inline !important; }
+pre, pre code { white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1 id="optimisation-linéaire-séance-2-le-solveur-dexcel">Optimisation
+linéaire — Séance 2 : le Solveur d&#39;Excel</h1>
+<p><em>BUT3 GEA — IUT de Saint-Denis</em></p>
+<hr />
+<div style="page-break-inside: avoid"><h2 id="aujourdhui">Aujourd&#39;hui</h2>
+<p>À la séance 1, on a résolu des problèmes à 2 produits <strong>en
+dessinant</strong> (Desmos). Aujourd&#39;hui, on fait faire le calcul par un
+logiciel : le <strong>Solveur d&#39;Excel</strong>. Il trouve la même
+solution, il marche aussi avec 3, 4 ou 50 produits, et il donne
+directement ce qu&#39;on cherchait avec les curseurs : <strong>ce que
+rapporterait une unité de ressource en plus</strong>.</p></div>
+<ol type="1">
+<li>Activer le Solveur, puis l&#39;utiliser sur l&#39;exemple de la Brûlerie
+(démonstration, à suivre sur votre ordinateur).</li>
+<li><strong>Exercice 1</strong> : la savonnerie de la séance 1, avec le
+Solveur.</li>
+<li>Le <strong>rapport de sensibilité</strong> : prix fictifs et coûts
+réduits.</li>
+<li><strong>Devoir noté</strong> : un problème
+<strong>personnel</strong> (vos données sont différentes de celles de
+vos voisins). Il compte pour la note d&#39;optimisation : commencez-le
+aujourd&#39;hui en salle, pendant que vous pouvez poser vos questions.</li>
+</ol>
+<p><strong>Fichiers :</strong> le classeur <code>opti2.xlsx</code>
+(Brûlerie, Savonnerie, Traiteur) et votre fichier de devoir, sur le
+dépôt du cours : <a href="https://github.com/frey-iutsd/sql-2026/tree/main/opti2" class="uri">https://github.com/frey-iutsd/sql-2026/tree/main/opti2</a></p>
+<hr />
+<div style="page-break-inside: avoid"><h2 id="retour-sur-la-séance-1">Retour sur la séance 1</h2>
+<p>Les exercices 1 et 2 sont bien réussis. Trois remarques :</p></div>
+<ul>
+<li><strong>x ≥ 0, pas x &gt; 0</strong>, et pour
+<strong>toutes</strong> les variables (z ≥ 0 aussi) : fabriquer 0 unité
+d&#39;un produit est permis, et c&#39;est parfois la meilleure solution.</li>
+<li><strong>Vérifiez toute solution qu&#39;on vous donne</strong>, y compris
+celle d&#39;un logiciel ou d&#39;un site : remplacez les valeurs dans chaque
+contrainte. Par exemple, « 150 végétariens et 150 Premium » demanderait
+12 × 150 + 20 × 150 = 4 800 min de préparation, alors qu&#39;il n&#39;y en a que
+4 200 : ce n&#39;est pas une solution.</li>
+<li><strong>Exercice 3 c), pourquoi aucun plateau végétarien ?</strong>
+Il faut regarder <strong>les deux</strong> ressources saturées,
+préparation et chambre froide. Aujourd&#39;hui, le Solveur va nous dire ce
+que « vaut » chacune : 0,70 € par minute de préparation, 1 € par place
+en chambre froide. Un plateau végétarien utilise 12 min et 1 place, soit
+12 × 0,70 + 1 = <strong>9,40 €</strong> de ressources rares, pour
+seulement 7 € de marge. Le budget ingrédients, lui, n&#39;est pas saturé :
+ne pas le dépenser ne rapporte rien. Le végétarien devient donc
+intéressant si sa marge dépasse <strong>9,40 €</strong>.</li>
+</ul>
+<hr />
+<div style="page-break-inside: avoid"><h2 id="activer-le-solveur">1. Activer le Solveur</h2>
+<p>Le Solveur est un <strong>complément</strong> d&#39;Excel : il est
+installé, mais il faut l&#39;activer (une fois par ordinateur ; dans les
+salles de l&#39;IUT, peut-être à chaque connexion).</p></div>
+<div class="tip">
+<ol>
+<li>
+Excel : <strong>Fichier → Options → Compléments</strong>.
+</li>
+<li>
+En bas, à côté de <strong>Gérer : Compléments Excel</strong>, cliquez
+sur <strong>Atteindre…</strong>
+</li>
+<li>
+Cochez <strong>Complément Solveur</strong>, puis <strong>OK</strong>.
+</li>
+<li>
+Le bouton <strong>Solveur</strong> apparaît à droite de l&#39;onglet
+<strong>Données</strong> (groupe Analyse).
+</li>
+</ol>
+<p>Excel en anglais : File → Options → Add-ins → Manage: Excel Add-ins →
+Go… → Solver Add-in ; puis Data → Solver. Mac : Outils → Compléments
+Excel → Solver Add-In ; puis Données → Solveur.<br> <strong>Excel en
+ligne n&#39;a pas de Solveur.</strong> À la maison sans Excel : LibreOffice
+Calc (gratuit), menu Outils → Solveur.</p>
+</div>
+<hr />
+<div style="page-break-inside: avoid"><h2 id="préparer-la-feuille-la-disposition-standard">2. Préparer la
+feuille : la disposition standard</h2>
+<p>Le Solveur ne lit pas un énoncé : il faut écrire le modèle
+<strong>dans les cellules</strong>. On utilise toujours la même
+disposition (feuille <strong>Brûlerie</strong> du classeur) :</p></div>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>B</strong> Classique</th>
+<th><strong>C</strong> Intense</th>
+<th><strong>D</strong> Total</th>
+<th><strong>E</strong></th>
+<th><strong>F</strong> Disponible</th>
+<th><strong>G</strong> Reste</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>5</strong> Quantité (kg)</td>
+<td><em>(jaune, vide)</em></td>
+<td><em>(jaune, vide)</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>6</strong> Marge (€ par kg)</td>
+<td>6</td>
+<td>5</td>
+<td><code>=SOMMEPROD(B6:C6;B$5:C$5)</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>9</strong> Arabica (kg)</td>
+<td>0,8</td>
+<td>0,4</td>
+<td><code>=SOMMEPROD(B9:C9;B$5:C$5)</code></td>
+<td>≤</td>
+<td>320</td>
+<td><code>=F9-D9</code></td>
+</tr>
+<tr class="even">
+<td><strong>10</strong> Robusta (kg)</td>
+<td>0,2</td>
+<td>0,6</td>
+<td><em>(recopier vers le bas)</em></td>
+<td>≤</td>
+<td>240</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>11</strong> Machine (kg)</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>≤</td>
+<td>450</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Les cellules variables</strong> (en jaune, B5:C5) : les
+quantités. On les laisse vides : c&#39;est le Solveur qui les remplit.</li>
+<li><strong>L&#39;objectif</strong> (en vert, D6) : la marge totale = 6 ×
+Classique + 5 × Intense. <code>SOMMEPROD</code> multiplie deux lignes
+case par case et additionne.</li>
+<li><strong>Une ligne par contrainte</strong> : ce qu&#39;on utilise
+(Total), le signe, ce qu&#39;on a (Disponible), ce qui reste.</li>
+<li>Les <strong>$</strong> devant le 5 (<code>B$5:C$5</code>) bloquent
+la ligne des quantités : on peut recopier la formule de D9 vers le bas
+(D10, D11) sans la retaper.</li>
+</ul>
+<div class="tip">
+Excel en français sépare les arguments par un
+<strong>point-virgule</strong> : <code>SOMMEPROD(B6:C6;B$5:C$5)</code>.
+Vérification : tapez 1 dans B5 et C5 ; D6 doit afficher 11 et D9 doit
+afficher 1,2. Puis effacez B5 et C5.
+</div>
+<hr />
+<div style="page-break-inside: avoid"><h2 id="lancer-le-solveur">3. Lancer le Solveur</h2>
+<p><strong>Données → Solveur</strong>, puis remplissez la fenêtre «
+Paramètres du solveur » :</p></div>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Champ</th>
+<th>Brûlerie</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Définir l&#39;objectif</strong></td>
+<td><code>$D$6</code></td>
+</tr>
+<tr class="even">
+<td><strong>À</strong></td>
+<td><strong>Max</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Cellules variables</strong></td>
+<td><code>$B$5:$C$5</code></td>
+</tr>
+<tr class="even">
+<td><strong>Contraintes</strong> : bouton <strong>Ajouter</strong></td>
+<td>Référence <code>$D$9:$D$11</code>, signe <code>&lt;=</code>,
+Contrainte <code>$F$9:$F$11</code>, puis <strong>OK</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Rendre les variables sans contrainte non
+négatives</strong></td>
+<td><strong>coché</strong> (c&#39;est x ≥ 0, y ≥ 0)</td>
+</tr>
+<tr class="even">
+<td><strong>Méthode de résolution</strong></td>
+<td><strong>Simplex PL</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Cliquez sur <strong>Résoudre</strong>. Le Solveur affiche « Le
+solveur a trouvé une solution… ». Choisissez <strong>Garder la solution
+du solveur</strong>, sélectionnez les rapports <strong>Réponses</strong>
+et <strong>Sensibilité</strong>, puis <strong>OK</strong>.</p>
+<p>Résultat : <strong>350 kg de Classique, 100 kg d&#39;Intense, 2 600
+€</strong>, comme avec Desmos. La colonne Reste montre ce qui est saturé
+: arabica 0, robusta 110, machine 0.</p>
+<div class="tip">
+Les réglages du Solveur sont <strong>enregistrés avec le
+fichier</strong> : en rouvrant le Solveur, on les retrouve. Si on change
+une donnée (une marge, un stock), il suffit de relancer
+<strong>Résoudre</strong>.<br> Si le Solveur affiche :
+<ul>
+<li>
+« <strong>Le Solveur n&#39;a pas trouvé de solution réalisable</strong> » :
+les contraintes sont incompatibles. Vérifiez les données, les signes (≤
+ou ≥) et les unités.
+</li>
+<li>
+« <strong>Les valeurs de la cellule objectif ne convergent pas</strong>
+» : rien n&#39;empêche la marge d&#39;augmenter sans fin. Il manque une
+contrainte (ou la case « non négatives » n&#39;est pas cochée).
+</li>
+</ul>
+</div>
+<div style="page-break-inside: avoid"><h3 id="exercice-1-la-savonnerie-lutèce-avec-le-solveur">Exercice 1 — La
+Savonnerie Lutèce, avec le Solveur</h3>
+<p>Feuille <strong>Savonnerie</strong> : les données de la séance 1
+(huile 120 L, travail 108 h, séchoir 30 fournées ; marges 50 € et 60
+€).</p></div>
+<div class="exo">
+<p><strong>a)</strong> Écrivez les formules (Total, marge totale,
+Reste), réglez le Solveur et résolvez. Retrouvez-vous le résultat de la
+séance 1 ?</p>
+</div>
+<div class="exo">
+<p><strong>b)</strong> Quelles ressources sont saturées ? Combien
+reste-t-il de place au séchoir ?</p>
+</div>
+<div class="exo">
+<p><strong>c)</strong> La marge des shampooings passe à <strong>90
+€</strong> : changez la cellule, relancez le Solveur. Nouveau programme
+et nouvelle marge ? Remettez ensuite 60 €.</p>
+</div>
+<hr />
+<div style="page-break-inside: avoid"><h2 id="le-rapport-de-sensibilité">4. Le rapport de sensibilité</h2>
+<p>Le Solveur a ajouté une feuille <strong>Rapport de sensibilité
+1</strong>. Deux tableaux nous intéressent.</p></div>
+<p><strong>Contraintes : le prix fictif d&#39;une ressource.</strong>
+Colonne <strong>Ombre prix</strong> (c&#39;est la traduction d&#39;Excel ; on
+dit <strong>prix fictif</strong>) : de combien la marge totale
+augmenterait avec <strong>une unité de plus</strong> de cette ressource.
+C&#39;est ce qu&#39;on cherchait à la séance 1 avec les curseurs.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Brûlerie</th>
+<th>Reste</th>
+<th>Prix fictif</th>
+<th>Valable jusqu&#39;à (colonne « Marge d&#39;augmentation autorisée »)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arabica</td>
+<td>0</td>
+<td><strong>2,50 €</strong> par kg</td>
+<td>+ 40 kg</td>
+</tr>
+<tr class="even">
+<td>Robusta</td>
+<td>110</td>
+<td><strong>0 €</strong></td>
+<td>il en reste : en avoir plus ne sert à rien</td>
+</tr>
+<tr class="odd">
+<td>Machine</td>
+<td>0</td>
+<td><strong>4 €</strong> par kg</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Une ressource <strong>non saturée</strong> a toujours un prix fictif
+de <strong>0</strong>.</li>
+<li><strong>Pour décider</strong> : un fournisseur propose 10 kg
+d&#39;arabica en plus, à 2 € de plus le kg que d&#39;habitude. La marge augmente
+de 10 × 2,50 = 25 €, le surcoût est de 10 × 2 = 20 € : on gagne
+<strong>5 €</strong>, on accepte. À 3 € de plus le kg, on perdrait 5 € :
+on refuse.</li>
+<li>Le prix fictif n&#39;est valable que <strong>pour quelques
+unités</strong> : au-delà de 40 kg d&#39;arabica en plus, la machine bloque
+seule et l&#39;arabica ne rapporte plus rien.</li>
+</ul>
+<p><strong>Cellules variables : le coût réduit d&#39;un produit.</strong>
+Pour un produit <strong>fabriqué</strong>, il vaut 0. Pour un produit
+<strong>non fabriqué</strong>, il est négatif : c&#39;est ce que la marge
+totale <strong>perdrait</strong> pour chaque unité qu&#39;on obligerait à
+fabriquer. Le produit devient intéressant si sa marge augmente de plus
+que ce montant.</p>
+<p>Exemple, le traiteur de la séance 1 : coût réduit du végétarien =
+<strong>−2,40 €</strong>. Sa marge est de 7 € : il devient intéressant
+au-dessus de 7 + 2,40 = <strong>9,40 €</strong> (voir le retour sur la
+séance 1 ci-dessus).</p>
+<div class="exo">
+<p><strong>d)</strong> Savonnerie (marges 50 € et 60 €) : ouvrez le
+rapport de sensibilité. Quels sont les prix fictifs de l&#39;huile, du
+travail et du séchoir ? Comparez avec vos réponses de la séance 1 (une
+heure de travail en plus, un litre d&#39;huile en plus).</p>
+</div>
+<div class="tip">
+Sans rapport de sensibilité (LibreOffice), on trouve le prix fictif
+comme à la séance 1 : on augmente le disponible d&#39;<strong>une</strong>
+unité, on relance, et on regarde de combien la marge a augmenté.
+</div>
+<hr />
+<div style="page-break-inside: avoid"><h2 id="devoir-noté-votre-problème-personnel">5. Devoir noté : votre
+problème personnel</h2>
+<div class="bareme">
+<strong>Ce devoir est noté</strong> et compte pour la note
+d&#39;optimisation. À rendre sur Teams au plus tard le <strong>dimanche 29
+novembre à 23 h 59</strong>. Un devoir non rendu compte 0.
+</div>
+<p><strong>Votre fichier :</strong> sur <a href="https://github.com/frey-iutsd/sql-2026/tree/main/opti2/devoir" class="uri">https://github.com/frey-iutsd/sql-2026/tree/main/opti2/devoir</a>,
+prenez le fichier qui porte <strong>votre numéro étudiant</strong> (par
+exemple <code>12401234.xlsx</code>) : cliquez dessus, puis sur le bouton
+de téléchargement (⤓). Si votre numéro n&#39;y est pas, demandez un fichier
+à l&#39;enseignant.</p>
+<p>Chaque fichier a <strong>ses propres données</strong> : copier les
+réponses d&#39;un autre étudiant donne des réponses fausses. Vous pouvez
+vous entraider pour la <strong>méthode</strong>.</p>
+<p><strong>Ce qu&#39;il faut faire</strong> (tout est dans le fichier,
+feuille Devoir) :</p>
+<ol type="1">
+<li>Recopier les données de l&#39;énoncé dans le tableau du modèle.
+<strong>Attention</strong> : le tableau de l&#39;énoncé a les produits
+<strong>en lignes</strong>, le modèle les a <strong>en
+colonnes</strong>. Et la main-d&#39;œuvre est donnée en
+<strong>minutes</strong> par lot mais en <strong>heures</strong>
+disponibles : mettez tout dans la même unité.</li>
+<li>Écrire les formules (Total, marge totale, Reste), régler le Solveur,
+résoudre. Indiquer pour chaque ressource si elle est saturée (oui ou
+non).</li>
+<li>Répondre aux questions 2 à 6 dans les cases grises, avec le
+<strong>rapport de sensibilité</strong> et le Solveur. Une réponse = un
+nombre (ou oui / non) dans la case, sans unité.</li>
+<li>Question 6 : il faut <strong>ajouter une contrainte</strong> « au
+moins … lots » : bouton <strong>Ajouter</strong>, référence = la cellule
+jaune du produit, signe <code>&gt;=</code>, contrainte = le nombre.
+Faites-la sur une <strong>copie de la feuille</strong> (clic droit sur
+l&#39;onglet → Déplacer ou copier → Créer une copie), pour garder la
+solution de la question 1 sur la feuille Devoir.</li>
+</ol>
+<div class="tip">
+<strong>Ne déplacez pas le tableau</strong>, n&#39;insérez ni ligne ni
+colonne dans la feuille Devoir : le fichier est corrigé automatiquement,
+cellule par cellule. Gardez la feuille du rapport de sensibilité dans le
+fichier.
+</div>
+<p><strong>Rendu :</strong> le fichier <code>.xlsx</code>, <strong>sans
+changer son nom</strong>, dans le devoir <strong>« Optimisation — séance
+2 »</strong> sur Teams, puis cliquez sur <strong>Remettre</strong>. Au
+plus tard le <strong>dimanche 29 novembre à 23 h 59</strong>. Faites-le
+avec <strong>Excel</strong> si possible (salles de l&#39;IUT) : le Solveur
+d&#39;Excel enregistre ses réglages dans le fichier, LibreOffice non.</p>
+<div class="bareme">
+<strong>Barème (20 points)</strong> : modèle dans la feuille (données et
+formules) 4 · programme optimal et marge 4 · réglages du Solveur
+enregistrés 2 · ressources saturées 2 · prix fictif 2 · offre :
+changement de marge 1, décision 1 · marge à partir de laquelle le
+produit absent devient intéressant 2 · marge avec la commande du client
+2.
+</div>
+<hr />
+<h2 id="exercice-2-entraînement-facultatif-le-traiteur-avec-trois-produits">Exercice
+2 (entraînement, facultatif) — Le traiteur, avec trois produits</h2>
+<p>Feuille <strong>Traiteur</strong> : le traiteur de la séance 1
+(Classique 10 min, 6 € d&#39;ingrédients, marge 8 € ; Végétarien 12 min, 5
+€, 7 € ; Premium 20 min, 12 €, 15 € ; 70 heures de préparation, 2 700 €
+d&#39;ingrédients, 300 places en chambre froide).</p></div>
+<div class="exo">
+<p><strong>a)</strong> Remplissez le tableau (attention : 70 h = 4 200
+min), écrivez les formules et résolvez. Retrouvez-vous 180 Classiques, 0
+Végétarien, 120 Premium, 3 240 € ?</p>
+</div>
+<div class="exo">
+<p><strong>b)</strong> Dans le rapport de sensibilité, retrouvez les
+prix fictifs de la préparation et de la chambre froide, et le coût
+réduit du végétarien.</p>
+</div>
+<div class="exo">
+<p><strong>c)</strong> Mettez la marge du végétarien à 9,50 € et
+relancez. Que devient le programme optimal ?</p>
+</div>
+</body>
+</html>
