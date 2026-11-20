@@ -135,75 +135,222 @@ feuille : la disposition standard</h2>
 <p>Le Solveur ne lit pas un énoncé : il faut écrire le modèle
 <strong>dans les cellules</strong>. On utilise toujours la même
 disposition (feuille <strong>Brûlerie</strong> du classeur) :</p></div>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th><strong>B</strong> Classique</th>
-<th><strong>C</strong> Intense</th>
-<th><strong>D</strong> Total</th>
-<th><strong>E</strong></th>
-<th><strong>F</strong> Disponible</th>
-<th><strong>G</strong> Reste</th>
+<table class="grille" style="font-size:85%">
+<tr>
+<th>
+</th>
+<th>
+A
+</th>
+<th>
+B
+</th>
+<th>
+C
+</th>
+<th>
+D
+</th>
+<th>
+E
+</th>
+<th>
+F
+</th>
+<th>
+G
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>5</strong> Quantité (kg)</td>
-<td><em>(jaune, vide)</em></td>
-<td><em>(jaune, vide)</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<tr>
+<th>
+4
+</th>
+<td>
+</td>
+<td>
+<strong>Classique</strong>
+</td>
+<td>
+<strong>Intense</strong>
+</td>
+<td>
+<strong>Total</strong>
+</td>
+<td>
+</td>
+<td>
+<strong>Disponible</strong>
+</td>
+<td>
+<strong>Reste</strong>
+</td>
 </tr>
-<tr class="even">
-<td><strong>6</strong> Marge (€ par kg)</td>
-<td>6</td>
-<td>5</td>
-<td><code>=SOMMEPROD(B6:C6;B$5:C$5)</code></td>
-<td></td>
-<td></td>
-<td></td>
+<tr>
+<th>
+5
+</th>
+<td>
+<strong>Quantité (kg)</strong>
+</td>
+<td style="background:#FFF2CC">
+</td>
+<td style="background:#FFF2CC">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
-<tr class="odd">
-<td><strong>9</strong> Arabica (kg)</td>
-<td>0,8</td>
-<td>0,4</td>
-<td><code>=SOMMEPROD(B9:C9;B$5:C$5)</code></td>
-<td>≤</td>
-<td>320</td>
-<td><code>=F9-D9</code></td>
+<tr>
+<th>
+6
+</th>
+<td>
+<strong>Marge (€ par kg)</strong>
+</td>
+<td>
+6
+</td>
+<td>
+5
+</td>
+<td style="background:#D9EAD3">
+<code style="white-space:nowrap">=SOMMEPROD(B6:C6;B$5:C$5)</code>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
-<tr class="even">
-<td><strong>10</strong> Robusta (kg)</td>
-<td>0,2</td>
-<td>0,6</td>
-<td><em>(recopier vers le bas)</em></td>
-<td>≤</td>
-<td>240</td>
-<td></td>
+<tr>
+<th style="height:6px;padding:0;line-height:6px;font-size:4px">
+7
+</th>
+<td style="height:6px;padding:0;line-height:6px;font-size:4px">
+</td>
+<td style="height:6px;padding:0;line-height:6px;font-size:4px">
+</td>
+<td style="height:6px;padding:0;line-height:6px;font-size:4px">
+</td>
+<td style="height:6px;padding:0;line-height:6px;font-size:4px">
+</td>
+<td style="height:6px;padding:0;line-height:6px;font-size:4px">
+</td>
+<td style="height:6px;padding:0;line-height:6px;font-size:4px">
+</td>
+<td style="height:6px;padding:0;line-height:6px;font-size:4px">
+</td>
 </tr>
-<tr class="odd">
-<td><strong>11</strong> Machine (kg)</td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td>≤</td>
-<td>450</td>
-<td></td>
+<tr>
+<th>
+8
+</th>
+<td>
+<em>Contraintes</em>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
-</tbody>
+<tr>
+<th>
+9
+</th>
+<td>
+Arabica (kg)
+</td>
+<td>
+0,8
+</td>
+<td>
+0,4
+</td>
+<td style="background:#EAF1FB">
+<code style="white-space:nowrap">=SOMMEPROD(B9:C9;B$5:C$5)</code>
+</td>
+<td>
+≤
+</td>
+<td>
+320
+</td>
+<td style="background:#EAF1FB">
+<code style="white-space:nowrap">=F9-D9</code>
+</td>
+</tr>
+<tr>
+<th>
+10
+</th>
+<td>
+Robusta (kg)
+</td>
+<td>
+0,2
+</td>
+<td>
+0,6
+</td>
+<td style="background:#EAF1FB">
+<code style="white-space:nowrap;color:#777">=SOMMEPROD(B10:C10;B$5:C$5)</code>
+</td>
+<td>
+≤
+</td>
+<td>
+240
+</td>
+<td style="background:#EAF1FB">
+<code style="white-space:nowrap;color:#777">=F10-D10</code>
+</td>
+</tr>
+<tr>
+<th>
+11
+</th>
+<td>
+Machine (kg)
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td style="background:#EAF1FB">
+<code style="white-space:nowrap;color:#777">=SOMMEPROD(B11:C11;B$5:C$5)</code>
+</td>
+<td>
+≤
+</td>
+<td>
+450
+</td>
+<td style="background:#EAF1FB">
+<code style="white-space:nowrap;color:#777">=F11-D11</code>
+</td>
+</tr>
 </table>
+<p style="font-size:90%">
+Couleurs comme dans le classeur (jaune : quantités, vert : marge totale,
+bleu : formules). En gris : formules obtenues en
+<strong>recopiant</strong> celles de la ligne 9, pas en les tapant.
+</p>
 <ul>
 <li><strong>Les cellules variables</strong> (en jaune, B5:C5) : les
 quantités. On les laisse vides : c&#39;est le Solveur qui les remplit.</li>
@@ -212,9 +359,14 @@ Classique + 5 × Intense. <code>SOMMEPROD</code> multiplie deux lignes
 case par case et additionne.</li>
 <li><strong>Une ligne par contrainte</strong> : ce qu&#39;on utilise
 (Total), le signe, ce qu&#39;on a (Disponible), ce qui reste.</li>
-<li>Les <strong>$</strong> devant le 5 (<code>B$5:C$5</code>) bloquent
-la ligne des quantités : on peut recopier la formule de D9 vers le bas
-(D10, D11) sans la retaper.</li>
+<li><strong>Recopier une formule vers le bas</strong> : sélectionnez D9,
+puis faites glisser le petit carré en bas à droite de la cellule (la
+<strong>poignée de recopie</strong>) jusqu&#39;à D11. Excel adapte la
+formule à chaque ligne (B9:C9 devient B10:C10, puis B11:C11). Même chose
+pour G9 → G11.</li>
+<li>Les <strong>$</strong> devant le 5 (<code>B$5:C$5</code>) empêchent
+cette adaptation : toutes les lignes utilisent bien les quantités de la
+ligne 5.</li>
 </ul>
 <div class="tip">
 Excel en français sépare les arguments par un
